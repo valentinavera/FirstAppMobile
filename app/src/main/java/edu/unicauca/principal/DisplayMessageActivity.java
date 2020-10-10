@@ -4,9 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 public class DisplayMessageActivity extends AppCompatActivity {
+
+    private Button buttonD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,5 +27,4 @@ public class DisplayMessageActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.textView);
         textView.setText(message);
     }
-
 }

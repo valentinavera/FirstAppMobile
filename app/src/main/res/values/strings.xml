@@ -4,4 +4,5 @@
     <string name="do_things" translatable="false">DO THINGS</string>
     <string name="nueva_tarea">Agrega una tarea</string>
     <string name="btn_enviar">Enviar</string>
+
 </resources>

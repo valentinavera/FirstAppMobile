@@ -6,18 +6,32 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DialogTaskClass.DialogListener {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
+    private TextView TextViewCreateTask;
+    private Button ButtonSendTask;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final Toast tag = Toast.makeText(this,"Ejecutando OnCreate()",Toast.LENGTH_SHORT);
-        tag.show();
-        TimeToast(tag, 10000);
+
+        TextViewCreateTask = (TextView) findViewById(R.id.viewTask);
+        ButtonSendTask = (Button) findViewById(R.id.buttonDialog);
+        ButtonSendTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog();
+            }
+        });
+
+        //final Toast tag = Toast.makeText(this,"Ejecutando OnCreate()",Toast.LENGTH_SHORT);
+        //tag.show();
+        //TimeToast(tag, 10000);
     }
 
     public void sendMessage(View view){
@@ -28,6 +42,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
+    public void openDialog() {
+        DialogTaskClass dialogTaskClass = new DialogTaskClass();
+        dialogTaskClass.show(getSupportFragmentManager(),"task Dialog");
+    }
+
+    @Override
+    public void applyText(String task) {
+        TextViewCreateTask.setText(task);
+    }
+
+    /*
     @Override
     protected void onStart() {
         super.onStart();
@@ -86,4 +112,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }.start();
     }
+
+     */
 }
